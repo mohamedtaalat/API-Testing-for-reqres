@@ -1,0 +1,746 @@
+{
+	"info": {
+		"_postman_id": "49942325-dfa809e0-5cb6-463c-8d9c-7bfefafc0099",
+		"name": "Reqers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get methods",
+			"item": [
+				{
+					"name": "200 Ok",
+					"item": [
+						{
+							"name": "Get users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e80df6ec-1328-4166-aa4a-5c06cdcd438a",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"pm.test(\"George is availble\",()=>{\r",
+											"    pm.expect(response.data[0].first_name).to.eql(\"George\");\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "49942325-9f36f4f2-7768-4596-bc9c-d1fb7366d8f0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one page of users",
+							"id": "49942325-a131a736-df06-4ccb-8a68-65e3ac10f022",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users?page=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get specific user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "159042e6-5686-400f-ab54-3082333851fb",
+										"exec": [
+											"pm.test(\"Id is equal to what i passed\",()=>{\r",
+											"    pm.expect(pm.response.json().data.id).to.be.eql(1);\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "49942325-982085d5-9811-4c5d-87fd-d35f96659ba6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get fake data",
+							"id": "49942325-be692914-2f3d-4c53-abb3-a7acd95b2ecb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/unknown",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"unknown"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get per page",
+							"id": "49942325-f32579f4-7007-4628-b798-40b9a0914934",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/{resource}?per_page=0",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"{resource}"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get unknown resource",
+							"id": "49942325-ce02d0de-d03e-4590-99b6-07cb2c89ba26",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/{rsource}/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"{rsource}",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "49942325-ebeb1bbd-786c-47c3-8803-f8902be112f5",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3ce9d1bd-93ee-498a-8bd8-e6bf2182b59d",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3bda695e-8cae-4664-805d-8ad1010de8cf",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"pm.test(\"Status code is 200\",()=>{\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "49942325-638189fd-e68e-4c1d-a2aa-ef754b3801de"
+		},
+		{
+			"name": "Put methods",
+			"item": [
+				{
+					"name": "200 Ok",
+					"item": [
+						{
+							"name": "Update user with put",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "322fede2-b535-43ac-8f38-462a38e3eb33",
+										"exec": [
+											"const response=pm.response.json();\r",
+											"pm.test(\"Last name is equal to new last name\",()=>{\r",
+											"    pm.expect(response.data.last_name).to.eql(\"Mohamed\");\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "49942325-f8b2a82a-f4ac-4b13-95d8-a75d4455a430",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"id\": 1,\r\n        \"email\": \"george.bluth@reqres.in\",\r\n        \"first_name\": \"George\",\r\n        \"last_name\": \"Mohamed\",\r\n        \"avatar\": \"https://reqres.in/img/faces/1-image.jpg\"\r\n    },\r\n    \"support\": {\r\n        \"url\": \"https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral\",\r\n        \"text\": \"Tired of writing endless social media content? Let Content Caddy generate it for you.\"\r\n    },\r\n    \"_meta\": {\r\n        \"powered_by\": \"🚀 ReqRes - Deploy backends in 30 seconds\",\r\n        \"upgrade_url\": \"https://app.reqres.in/upgrade\",\r\n        \"docs_url\": \"https://reqres.in\",\r\n        \"template_gallery\": \"https://app.reqres.in/templates\",\r\n        \"message\": \"This API is powered by ReqRes. Deploy your own backend in 30 seconds!\",\r\n        \"features\": [\r\n            \"30 Second Backend Templates\",\r\n            \"Custom API Endpoints\",\r\n            \"Data Persistence\",\r\n            \"Real-time Analytics\"\r\n        ],\r\n        \"upgrade_cta\": \"Upgrade to Pro for unlimited requests, custom endpoints, and data persistence\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update unknown resource with put",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d5066dbd-edd8-4302-add0-039e327199f4",
+										"exec": [
+											"pm.test(\"Year is updated\",()=>{\r",
+											"    pm.expect(pm.response.json().data.year).to.be.eql(2015);\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "49942325-29267bf5-c872-4495-beed-4cbef525bdd5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"id\": 1,\r\n        \"name\": \"cerulean\",\r\n        \"year\": 2015,\r\n        \"color\": \"#98B2D1\",\r\n        \"pantone_value\": \"15-4020\"\r\n    },\r\n    \"support\": {\r\n        \"url\": \"https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral\",\r\n        \"text\": \"Tired of writing endless social media content? Let Content Caddy generate it for you.\"\r\n    },\r\n    \"_meta\": {\r\n        \"powered_by\": \"🚀 ReqRes - Deploy backends in 30 seconds\",\r\n        \"upgrade_url\": \"https://app.reqres.in/upgrade\",\r\n        \"docs_url\": \"https://reqres.in\",\r\n        \"template_gallery\": \"https://app.reqres.in/templates\",\r\n        \"message\": \"This API is powered by ReqRes. Deploy your own backend in 30 seconds!\",\r\n        \"features\": [\r\n            \"30 Second Backend Templates\",\r\n            \"Custom API Endpoints\",\r\n            \"Data Persistence\",\r\n            \"Real-time Analytics\"\r\n        ],\r\n        \"upgrade_cta\": \"Upgrade to Pro for unlimited requests, custom endpoints, and data persistence\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/{rsource}/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"{rsource}",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "49942325-c5235fe1-621d-4df9-a97c-7383d5c0995f",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f4b7e808-ae16-4938-88d7-47fc5a1aedbc",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb4c7d3f-7e8b-41a1-a8ca-2104dcb5faac",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"pm.test(\"Status code is 200 Ok\",()=>{\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "49942325-fac6b613-ee29-4483-bde8-1bfa560a04ad"
+		},
+		{
+			"name": "Patch methods",
+			"item": [
+				{
+					"name": "200 Ok",
+					"item": [
+						{
+							"name": "Update user with patch",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c72c3c1-329a-4fd9-b184-1b775ad205a5",
+										"exec": [
+											"const response=pm.response.json();\r",
+											"pm.test(\"Check if last name is updated\",()=>{\r",
+											"    pm.expect(response.last_name).to.eql(\"Ahmed\");\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "49942325-fd1465cd-ca5c-4d14-9e3c-35d728343622",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"last_name\": \"Ahmed\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update unknown resource with patch",
+							"id": "49942325-c285b119-bf75-4c18-b6c3-8af60d439087",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"year\": 2015\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/{rsource}/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"{rsource}",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "49942325-cb0f4aec-d69e-49aa-87ff-535fc63bc481",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "66e786ff-fddb-42ed-9c5a-4d80b181be3d",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cb0c292-9b9a-4204-a1e7-c9c623138cc1",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"pm.test(\"Status code is a 200 Ok\",()=>{\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "49942325-4c8f77a1-55ee-4601-b8e4-ac0325fde06f"
+		},
+		{
+			"name": "Delete methods",
+			"item": [
+				{
+					"name": "204 Success",
+					"item": [
+						{
+							"name": "Delete specific user",
+							"id": "49942325-cb7f4849-0585-4da4-ba04-83fb2a69ea0e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"last_name\": \"Ahmed\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete unknown resource",
+							"id": "49942325-5b39fe8f-3309-4eb2-9721-de4e2c340c7f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/{rsource}/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"{rsource}",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "49942325-0e7f875b-f685-4fca-8e3c-f341c09a5907",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "73e2ebd4-8780-438a-a4ad-4ad4b63dbb1d",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "142d1217-4576-483f-aa75-fc849bce422a",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"pm.test(\"Status code is a 204 Success\",()=>{\r",
+									"    pm.response.to.have.status(204);\r",
+									"})"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "49942325-130a4f2c-f913-4412-9fdf-a4f99b01e661"
+		},
+		{
+			"name": "Post methods",
+			"item": [
+				{
+					"name": "200 Ok",
+					"item": [
+						{
+							"name": "Log in",
+							"id": "49942325-12ad2cff-ba74-439e-ad0c-e7d24b853e45",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"Mohamed Talaat\",\r\n  \"email\": \"mohamedabotalat57@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"id": "49942325-3825e519-2c99-41bc-a027-c543a7cd68e8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"Mohamed Talaat\",\r\n  \"email\": \"mohamedabotalat57@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "49942325-bbeb7a18-421d-461f-b8f2-a5490a110382"
+				}
+			],
+			"id": "49942325-17dd950d-8cca-41cb-a271-4c0464e00e51"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "reqres-free-v1",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7b4dd479-79bd-40c4-b32f-c39c6a7834cb",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "323c3173-3078-4db6-b684-5f19f440494e",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
